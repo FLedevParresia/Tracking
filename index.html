@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Générateur de liens Newsletter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Générateur de liens Newsletter</h1>
+    <form id="generatorForm">
+        <label for="lienClient">Lien tracké du client :</label>
+        <input type="text" id="lienClient" name="lienClient"
+            placeholder="https://client.com/page?utm_source=NL&utm_campaign=exemple" required>
+
+        <label for="positions">Sélectionnez les positions (Ctrl + clic pour en choisir plusieurs) :</label>
+        <select id="positions" name="positions" multiple required>
+            <option value="bannierehaute">Bannière Haute</option>
+            <option value="article1">Article 1</option>
+            <option value="article2">Article 2</option>
+            <option value="footer">Footer</option>
+        </select>
+
+        <button type="submit">Générer les liens</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Redirection en cours...</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const redirectUrl = decodeURIComponent(params.get('redirect'));
+            const honeyPot = params.get('robot_check');
+
+            // Simple validation : vérifie si le lien commence bien par http ou https
+            if (redirectUrl && /^https?:\/\//.test(redirectUrl)) {
+                if (!honeyPot) {
+                    // (Optionnel) Tracking Matomo Event ici si besoin
+                    // var _paq = window._paq = window._paq || [];
+                    // _paq.push(['trackEvent', 'Redirection', 'BanniereHaute', redirectUrl]);
+
+                    // Redirection après un court délai (pour le tracking éventuel)
+                    setTimeout(function () {
+                        window.location.href = redirectUrl;
+                    }, 500);
+                } else {
+                    document.body.innerHTML = "<h1>Redirection bloquée (pot de miel activé).</h1>";
+                }
+            } else {
+                document.body.innerHTML = "<h1>URL invalide ou manquante.</h1>";
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Redirection en cours...</h1>
+    <p>Vous allez être redirigé vers le site du client.</p>
+</body>
+
+</html>
